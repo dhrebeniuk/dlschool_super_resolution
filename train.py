@@ -136,12 +136,12 @@ if __name__ == '__main__':
         valid_generator_losses.append(valid_generator_loss)
         valid_discriminator_losses.append(valid_discriminator_loss)
 
-        print('Epoch: {} \tTraining Generator Loss: {:.6f}  \tValidation Generator Loss: {:.6f} \tTraining '
-              'Discriminator Loss:{:.6f} \tValidation Discriminator Loss: {:.6f}'.format(
-                    epoch, train_generator_loss,  valid_generator_loss, train_discriminator_loss,
-                    valid_discriminator_loss))
-
         if epoch % print_result_per_epochs == 0:
+            print('Epoch: {} \tTraining Generator Loss: {:.6f}  \tValidation Generator Loss: {:.6f} \tTraining '
+                  'Discriminator Loss:{:.6f} \tValidation Discriminator Loss: {:.6f}'.format(
+                epoch, train_generator_loss, valid_generator_loss, train_discriminator_loss,
+                valid_discriminator_loss))
+
             model.eval()
 
             model.to(device)
