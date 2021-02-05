@@ -15,7 +15,7 @@ if __name__ == '__main__':
     parser.add_argument('--lr', type=float, default=1e-4, help='learning rate')
     parser.add_argument('--train-folder', type=str, default='urban100/image_SRF_4', help='train folder')
     parser.add_argument('--epochs', type=int, default=100000, help='epochs count')
-    parser.add_argument('--print-result-per-epochs', type=int, default=1, help='print result to folder frequency')
+    parser.add_argument('--print-result-per-epochs', type=int, default=1000, help='print result to folder frequency')
     parser.add_argument('--out-folder', type=str, default='output', help='output train results')
     opt = parser.parse_args()
 
@@ -159,5 +159,9 @@ if __name__ == '__main__':
                 axs[0].imshow(source / 255.0, )
                 axs[1].imshow(target / 255.0, )
                 axs[2].imshow(np.clip(result / 255.0, 0.0, 1.0), )
+
+                if not os.path.isdir(out_path):
+                    os.mkdir(out_path)
+
                 plt.savefig(os.path.join(out_path, 'epoch-{}-out.png'.format(epoch)))
 
